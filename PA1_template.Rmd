@@ -19,8 +19,7 @@ Create a new dataframe that contains a vector of unique dates and a vector of
 steps.  
 ```{r echo = TRUE}
 library(dplyr)
-steps_per_day <- summarize(group_by(activity, date), steps = sum(steps,
-                                                                 na.rm = T))
+steps_per_day <- summarize(group_by(activity, date), steps = sum(steps))
 ```
 Here is the histogram of the total number of steps taken each day:
 ```{r echo = TRUE}
@@ -120,11 +119,13 @@ and the **new median** is
 ```{r echo = TRUE}
 median(steps_per_day_new$steps)
 ```
-One can see that the new values of the mean and the median differ from the
-initial ones. Interestingly, replacing the missing values with the means for the
+One can see that while the mean did not change, the new value of the mean median
+differs from the
+initial one slightly. Replacing the missing values with the means for the
 corresponding intervals led to the values of mean and median being closer to
 each other. In fact, with the given degree of precision they are equal. I believe
-that the reason is as follows: on the initial histogram we can see that the
+that the reason why the median became higher is as follows:
+on the initial histogram we can see that the
 larger numbers of steps (right-hand side) occur more frequently. Thus, the portion
 of large interval-averaged values we added is greated than that of the 
 smaller ones.
@@ -163,4 +164,4 @@ plot(activity_pattern_weekend$interval, activity_pattern_weekend$steps,
      ylab = "Number of steps")
 ```
   
-  *Thank you for attention!*
+  *Thank you for your time!*

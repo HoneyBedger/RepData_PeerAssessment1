@@ -36,8 +36,7 @@ library(dplyr)
 ```
 
 ```r
-steps_per_day <- summarize(group_by(activity, date), steps = sum(steps,
-                                                                 na.rm = T))
+steps_per_day <- summarize(group_by(activity, date), steps = sum(steps))
 ```
 Here is the histogram of the total number of steps taken each day:
 
@@ -56,7 +55,7 @@ mean(steps_per_day$steps, na.rm = T)  ## NAs are simply removed, i.e. ignored
 ```
 
 ```
-## [1] 9354.23
+## [1] 10766.19
 ```
 and the **median** is
 
@@ -65,7 +64,7 @@ median(steps_per_day$steps, na.rm = T)
 ```
 
 ```
-## [1] 10395
+## [1] 10765
 ```
 
 ## What is the average daily activity pattern?
@@ -187,11 +186,13 @@ median(steps_per_day_new$steps)
 ```
 ## [1] 10766.19
 ```
-One can see that the new values of the mean and the median differ from the
-initial ones. Interestingly, replacing the missing values with the means for the
+One can see that while the mean did not change, the new value of the mean median
+differs from the
+initial one slightly. Replacing the missing values with the means for the
 corresponding intervals led to the values of mean and median being closer to
 each other. In fact, with the given degree of precision they are equal. I believe
-that the reason is as follows: on the initial histogram we can see that the
+that the reason why the median became higher is as follows:
+on the initial histogram we can see that the
 larger numbers of steps (right-hand side) occur more frequently. Thus, the portion
 of large interval-averaged values we added is greated than that of the 
 smaller ones.
@@ -242,4 +243,4 @@ plot(activity_pattern_weekend$interval, activity_pattern_weekend$steps,
 
 ![](PA1_template_files/figure-html/unnamed-chunk-19-1.png) 
   
-  *Thank you for attention!*
+  *Thank you for your time!*
